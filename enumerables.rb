@@ -8,8 +8,11 @@ module Enumerable
 
     def my_each_with_index
         index = 0
-        for value in self
-            yield value, index
+        # self.my_each {|item| yield item, index and index += 1}
+        # ^^^ look into why this doesn't work
+        # 
+        self.my_each do |item|
+            yield item, index
             index += 1
         end
     end
