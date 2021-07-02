@@ -16,27 +16,19 @@ module Enumerable
 
     def my_select
         selection = []
-        self.my_each do |item|
-            if yield item
-                selection.append(item)
-            end
-        end
+        self.my_each { |item| selection.append(item) if yield item }
         selection
     end
 
     def my_all?
         all = true
-        self.my_each do |item|
-            all &&= yield item
-        end
+        self.my_each {|item| all &&= yield item}
         all
     end
 
     def my_any?
         any = false
-        self.my_each do |item|
-            any ||= yield item
-        end
+        self.my_each {|item| any ||= yield item}
         any
     end
 
