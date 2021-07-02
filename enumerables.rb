@@ -11,6 +11,33 @@ module Enumerable
             index += 1
         end
     end
+    def my_select
+        selection = []
+        self.my_each do |item|
+            if yield item
+                selection.append(item)
+            end
+        end
+        selection
+    end
+    def my_all?
+
+    end
+    def my_any?
+
+    end
+    def my_none?
+
+    end
+    def my_count
+
+    end
+    def my_map
+
+    end
+    def my_inject
+
+    end
 end
 
 numbers = [1,2,3,4,5]
