@@ -41,7 +41,7 @@ module Enumerable
     end
 
     def my_none?
-
+        !self.my_all? {|item| yield item}
     end
 
     def my_count
