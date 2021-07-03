@@ -49,7 +49,9 @@ module Enumerable
     end
 
     def my_map
-
+        map = []
+        self.my_each {|item| map.append(yield item)}
+        map
     end
 
     def my_inject
