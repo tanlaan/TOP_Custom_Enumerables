@@ -54,8 +54,13 @@ module Enumerable
         map
     end
 
-    def my_inject
-
+    def my_inject(initial = nil)
+        memo = initial
+        self.my_each do |item| 
+            memo = yield memo, item if memo
+            memo ||= item
+        end
+        memo       
     end
 end
 
