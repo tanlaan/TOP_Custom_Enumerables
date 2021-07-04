@@ -55,10 +55,11 @@ module Enumerable
     end
 
     def my_inject(initial = nil)
-        memo = initial
+        memo = initial 
         self.my_each do |item| 
-            memo = yield memo, item if memo
-            memo ||= item
+            memo = item and next if memo.class == Symbol
+            memo = initial.to_proc.call(memo, item) if initial.class == Symbol 
+            memo = yield memo, item if block_given?
         end
         memo       
     end
