@@ -48,9 +48,15 @@ module Enumerable
         count
     end
 
-    def my_map
+    def my_map(map_proc = nil)
         map = []
-        self.my_each {|item| map.append(yield item)}
+        self.my_each do |item| 
+            if map_proc
+                map.append(map_proc.call(item))
+            else
+                map.append(yield item) 
+            end
+        end
         map
     end
 
